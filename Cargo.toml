@@ -1,0 +1,17 @@
+[package]
+name = "lsgpu"
+version = "0.1.0"
+authors = ["luozijun <luozijun.assistant@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+
+[target.'cfg(any(target_os = "macos", target_os = "ios", target_os = "tvos"))'.dependencies]
+metal = { version = "0.13", features = [ "private" ] }
+
+[target.'cfg(target_os = "linux")'.dependencies]
+vulkano = "0.11.0"
+
+[target.'cfg(target_os = "windows")'.dependencies]
+winapi = { version = "0.3", features = ["dxva2api"] }
+
