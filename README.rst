@@ -10,15 +10,16 @@ rust lsgpu
 Build
 ------------
 
-
 .. code:: bash
     
     # macOS
-    cargo run
+    # DO NOTHING :)
 
     # Debian Linux
     sudo apt libvulkan1
 
     # Windows
     # TODO ...
+
+    cargo run
 
