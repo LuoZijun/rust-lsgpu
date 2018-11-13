@@ -5,7 +5,7 @@ use crate::vulkano::device::{
 };
 use crate::vulkano::instance::{
     Instance, InstanceExtensions, PhysicalDevice, PhysicalDeviceType,
-    Version, Features,
+    Version,
  };
 
 
@@ -51,11 +51,11 @@ pub fn default() -> GpuInfo {
         .map(|instance| {
             PhysicalDevice::enumerate(&instance)
                 .next()
-                .and_then()
-                .and_then(|physical_device| get_gpu_info(physical_device) )
-                .or_else(|| panic!("Couldn't find phy device!") )
+                .map(|physical_device| get_gpu_info(physical_device) )
+                .expect("Couldn't find phy device!")
         })
         .map_err(|e| panic!("Couldn't build instance: {:?}", e) )
+        .unwrap()
 }
 
 
